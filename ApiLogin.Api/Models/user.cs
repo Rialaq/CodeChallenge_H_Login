@@ -7,6 +7,6 @@ namespace ApiLogin.Api.Models
         string Mail,
         string Username,
         string Password,
-        bool IsAuthorize
+        bool IsVerified
     );
 }
