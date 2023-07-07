@@ -3,7 +3,7 @@ using ApiLogin.Api.Models;
 
 namespace ApiLogin.Api.Services.UserRespository
 {
-    public interface IUserService
+    public interface IUserRepository
     {
         /// <summary>
         /// Obtiene desde la base de datos un unico usuario por el email.
