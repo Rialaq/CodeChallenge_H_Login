@@ -17,8 +17,10 @@ builder.Services.AddSingleton(UserRespositoryFactories.Create());
 
 // Configuracion de Entity Framework.
 var configuration = builder.Configuration;
-builder.Services.AddDbContext<UserDBContext>(options => {
-    options.UseSqlServer(configuration?.GetConnectionString("connStringDev"));
+var GetConnectionString = configuration.GetConnectionString("connStringDev");
+builder.Services.AddDbContext<UserDBContext>(options =>
+{
+    options.UseSqlServer(GetConnectionString);
 });
 
 var app = builder.Build();
@@ -35,5 +37,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-    
+
 app.Run();
