@@ -9,7 +9,7 @@
             <br>
             <button class="btnMain">Iniciar Sesion</button>
             <br>
-            <label class="signInMessage"> Aun no tienes una cuenta <nuxt-link to="">Unete Aqui</nuxt-link> </label>
+            <label class="signInMessage"> Aun no tienes una cuenta <nuxt-link to="register">Unete Aqui</nuxt-link> </label>
         </div>
     </div>
 </template>
