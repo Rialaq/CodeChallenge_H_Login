@@ -7,7 +7,7 @@
             <MtInput name='Usuario' type="text" icon="user"></MtInput>
             <MtInput name='Contraseña' type="password" icon="key"></MtInput>
             <br>
-            <button class="btnMain">Iniciar Sesion</button>
+            <button class="btnMain" @click="loginUser">Iniciar Sesion</button>
             <br>
             <label class="signInMessage"> Aun no tienes una cuenta <nuxt-link to="register">Unete Aqui</nuxt-link> </label>
         </div>
@@ -17,12 +17,22 @@
 export default {
     data() {
         return {
-            feeds: []
+            username: "",
+            password: ""
         }
     },
     async mounted() {
     },
-    methods: {}
+    methods: {
+        async loginUser() {
+            let reqData = await this.$axios.post(`${process.env.API_URL}/login`, {
+                Username: this.username,
+                Password: this.password,
+            });
+
+            console.log(reqData.status);
+        },
+    }
 }
 </script>
 
