@@ -16,7 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton(UserRespositoryFactories.Create());
 
 // Configuracion de Entity Framework.
-var configuration = builder.Services.BuildServiceProvider().GetService<IConfiguration>();
+var configuration = builder.Configuration;
 builder.Services.AddDbContext<UserDBContext>(options => {
     options.UseSqlServer(configuration?.GetConnectionString("connStringDev"));
 });
