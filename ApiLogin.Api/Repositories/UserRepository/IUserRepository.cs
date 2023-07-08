@@ -1,31 +1,24 @@
 using System.Threading.Tasks;
 using ApiLogin.Api.Models;
 
-namespace ApiLogin.Api.Services.UserRespository
+namespace ApiLogin.Api.Repositories.UserRespository
 {
     public interface IUserRepository
     {
         /// <summary>
-        /// Obtiene desde la base de datos un unico usuario por el email.
+        /// Obtiene desde la base de datos un unico usuario por el id.
         /// </summary>
-        /// <param name="email"></param>
-        /// <returns> Datos completos del usuario (Models.User). </returns>
-        Task<User> GetByEmail(string email);
+        /// <param name="Id"></param>
+        /// <returns> Datos completos del usuario (Models.User) o nulo en caso de no encontrarlo. </returns>
+        Task<User?> GetById(int Id);
 
         /// <summary>
-        /// Obtiene desde la base de datos un unico usuario por el username.
-        /// </summary>
-        /// <param name="username"></param>
-        /// <returns> Datos completos del usuario (Models.User). </returns>
-        Task<User> GetByUsername(string username);
-
-        /// <summary>
-        /// Obtiene desde la base de datos un unico usuario por el username y la contraseña.
+        /// Obtiene desde la base de datos un unico usuario por el username y la contraseña y muestra si tiene acceso.
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
-        /// <returns> Datos completos del usuario (Models.User). </returns>
-        Task<User> GetByUsernameAndPassword(string username, string password);
+        /// <returns> Datos completos del usuario (Models.User) o nulo en caso de no encontralo. </returns>
+        Task<User?> GetByUsernameAndPassword(string username, string password);
 
         /// <summary>
         /// Crea un unico usuario en la base de datos en base a Models.User.
@@ -33,19 +26,5 @@ namespace ApiLogin.Api.Services.UserRespository
         /// <param name="user"></param>
         /// <returns>Retorna tarea completa y un throw en caso de error.</returns>
         Task CreateUser(User user);
-
-        /// <summary>
-        /// Actualiza un unico usuario de la base de datos.
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns>Retorna tarea completa y un throw en caso de error.</returns>
-        Task UpdateUserById(User user);
-
-        /// <summary>
-        /// Borra un unico usuario de la base de datos.
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns>Retorna tarea completa y un throw en caso de error.</returns>
-        Task DeleteUserById(User user);
     }
 }
