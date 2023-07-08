@@ -16,7 +16,7 @@ namespace ApiLogin.Api.Repositories.UserRespository
             return Task.FromResult(_users.FirstOrDefault(x => x.Id == Id));
         }
 
-        public Task<User?> GetByUsernameAndPassword(string username, string password)
+        public Task<User?> GetByUsernameAndPassword(string? username, string? password)
         {
             return Task.FromResult(_users.FirstOrDefault(x => x.Username == username && x.Password == password));
         }
