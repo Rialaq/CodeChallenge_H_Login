@@ -3,16 +3,24 @@
         <div class="RegisterHeader">
             <img src="../assets/logohumano.svg" width="300px">
         </div>
-        <div class="RegisterForm">
-            <div class="twoInputContainer">
-                <MtInput name='Nombre' type="text" icon="user"></MtInput>
-                <MtInput name='Apellido' type="text" icon="user"></MtInput>
+        <div id="RegisterForm">
+            <div id="twoInputContainer" v-if="!complete">
+                <MtInput name='Nombre' type="text" icon="user" v-model="name"></MtInput>
+                <MtInput name='Apellido' type="text" icon="user" v-model="lastname"></MtInput>
             </div>
-            <MtInput name='Correo' type="text" icon="mail"></MtInput>
-            <MtInput name='Usuario' type="text" icon="users"></MtInput>
-            <MtInput name='Contraseña' type="password" icon="key"></MtInput>
+            <div id="inputContainers" v-if="!complete">
+                <MtInput name='Correo' type="text" icon="mail" v-model="mail"></MtInput>
+                <MtInput name='Usuario' type="text" icon="users" v-model="username"></MtInput>
+                <MtInput name='Contraseña' type="password" icon="key" v-model="password"></MtInput>
+            </div>
             <br>
-            <button class="btnMain" @click="registerNewUser">Crear Cuenta</button>
+            <div class="formFooter">
+                <label id="RequestStatus">{{registerUserRequestStatus}}</label>
+                <br>
+                <button class="btnMain" v-if="!complete" @click="registerNewUser">Crear Cuenta</button>
+                <button class="btnMain" v-else @click="$router.push('/')"><span class="i-arrow-left"></span> Volver a Iniciar Sesion</button>
+
+            </div>
         </div>
     </div>
 </template>
@@ -24,7 +32,9 @@ export default {
             lastname: "",
             mail: "",
             username: "",
-            password: ""
+            password: "",
+            registerUserRequestStatus: "",
+            complete: false
         }
     },
     async mounted() {
@@ -33,6 +43,8 @@ export default {
         async registerNewUser() {
             var answer = confirm("Seguro que desea crear el usuario ?");
             if (answer) {
+                this.registerUserRequestStatus = "";
+                this.complete = false;
                 var registerUserRequest = await this.$axios.post(`${process.env.API_URL}/signin`, {
                     name: this.name,
                     lastname: this.lastname,
@@ -42,8 +54,16 @@ export default {
                     IsVerifed: true
                 });
 
-                console.log(registerUserRequest);
-                alert("Usuario creado correctamente");
+                
+                this.registerUserRequestStatus = registerUserRequest.data;
+                let RequestStatus = document.querySelector("#RequestStatus");
+                
+                if(registerUserRequest.data == true)
+                {
+                    this.complete = true;
+                    this.registerUserRequestStatus = "Se ha registrado correctamente, Favor iniciar sesion";
+                    RequestStatus.style.color = '#1976D2';
+                }
             }
         }
     }
@@ -61,12 +81,26 @@ export default {
     background: #f2f5f8;
 }
 
-.twoInputContainer {
+#twoInputContainer {
     display: flex;
     flex-flow: row nowrap;
 }
 
-.twoInputContainer :first-child {
+#twoInputContainer :first-child {
     margin-right: 10px;
+}
+
+#RegisterForm {
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+}
+
+#RequestStatus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'inter';
+    color: rgb(216, 48, 48);
 }
 </style>
