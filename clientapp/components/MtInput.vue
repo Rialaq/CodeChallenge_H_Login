@@ -61,32 +61,20 @@ export default {
                 inputSelect.style.height = "0";
             }
         },
-
-        cambiarImagen() {
-            var archivo = event.target.files[0];
-            var lector = new FileReader();
-            let image = document.getElementsByClassName(this.image)[0];
-
-            lector.onload = function (e) {
-                image.src = e.target.result;
-            }
-
-            lector.readAsDataURL(archivo);
-        }
     }
 }
 </script>
 
 <style>
 .input {
-    background: #1e2124;
+    background: white;
     border-radius: 10px;
     position: relative;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-flow: row nowrap;
-    color: #c3c4c5;
+    color: #51575c;
     margin-top: 50px;
     width: 100%;
     font-size: 14px;
@@ -118,7 +106,7 @@ export default {
     border: none;
     outline: none;
     font-size: 18px;
-    color: #c3c4c5;
+    color: #212529;
     width: 100%;
     font-family: 'inter';
 }
