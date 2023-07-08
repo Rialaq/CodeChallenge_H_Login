@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ApiLogin.Api.Models;
 
 namespace ApiLogin.Api.Repositories.UserRespository
@@ -14,6 +10,7 @@ namespace ApiLogin.Api.Repositories.UserRespository
         {
             _users = new List<User>();
         }
+        
         public Task<User?> GetById(int Id)
         {
             return Task.FromResult(_users.FirstOrDefault(x => x.Id == Id));
@@ -29,6 +26,5 @@ namespace ApiLogin.Api.Repositories.UserRespository
             _users.Add(user);
             return Task.CompletedTask;
         }
-
     }
 }
