@@ -18,7 +18,7 @@ namespace ApiLogin.Api.Repositories.UserRespository
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns> Datos completos del usuario (Models.User) o nulo en caso de no encontralo. </returns>
-        Task<User?> GetByUsernameAndPassword(string username, string password);
+        Task<User?> GetByUsernameAndPassword(string? username, string? password);
 
         /// <summary>
         /// Crea un unico usuario en la base de datos en base a Models.User.
