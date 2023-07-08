@@ -1,5 +1,6 @@
 using ApiLogin.Api.Data;
 using ApiLogin.Api.Factories;
+using ApiLogin.Api.Repositories.UserRespository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +14,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Injeccion del Factory.
-builder.Services.AddSingleton(UserRespositoryFactories.Create());
+builder.Services.AddScoped<IUserRepository, UserRespository>();
 
 // Configuracion de Entity Framework.
 var configuration = builder.Configuration;

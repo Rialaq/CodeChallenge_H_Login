@@ -6,11 +6,18 @@ namespace ApiLogin.Api.Repositories.UserRespository
     public interface IUserRepository
     {
         /// <summary>
-        /// Obtiene desde la base de datos un unico usuario por el id.
+        /// Obtiene desde la base de datos un unico usuario por el username.
         /// </summary>
-        /// <param name="Id"></param>
+        /// <param name="username"></param>
         /// <returns> Datos completos del usuario (Models.User) o nulo en caso de no encontrarlo. </returns>
-        Task<User?> GetById(int Id);
+        Task<User?> GetByUsername(string? username);
+
+        /// <summary>
+        /// Obtiene desde la base de datos un unico usuario por el mail.
+        /// </summary>
+        /// <param name="Mail"></param>
+        /// <returns> Datos completos del usuario (Models.User) o nulo en caso de no encontrarlo. </returns>
+        Task<User?> GetByMail(string? Mail);
 
         /// <summary>
         /// Obtiene desde la base de datos un unico usuario por el username y la contraseña y muestra si tiene acceso.
