@@ -32,7 +32,7 @@ namespace ApiLogin.Api.Controllers
                 return Ok("Usuario o contraseña incorrecta");
             }
 
-            return Ok(getUser);
+            return Ok(true);
         }
 
 
