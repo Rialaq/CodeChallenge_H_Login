@@ -61,6 +61,6 @@ export default {
   },
 
   env: {
-    API_URL: " http://localhost:5212/api/auth",
+    API_URL: "http://localhost:5212/api/auth",
   }
 }

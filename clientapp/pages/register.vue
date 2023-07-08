@@ -12,7 +12,7 @@
             <MtInput name='Usuario' type="text" icon="users"></MtInput>
             <MtInput name='Contraseña' type="password" icon="key"></MtInput>
             <br>
-            <button class="btnMain">Crear Cuenta</button>
+            <button class="btnMain" @click="registerNewUser">Crear Cuenta</button>
         </div>
     </div>
 </template>
@@ -20,12 +20,33 @@
 export default {
     data() {
         return {
-            feeds: []
+            name: "",
+            lastname: "",
+            mail: "",
+            username: "",
+            password: ""
         }
     },
     async mounted() {
     },
-    methods: {}
+    methods: {
+        async registerNewUser() {
+            var answer = confirm("Seguro que desea crear el usuario ?");
+            if (answer) {
+                var registerUserRequest = await this.$axios.post(`${process.env.API_URL}/signin`, {
+                    name: this.name,
+                    lastname: this.lastname,
+                    mail: this.mail,
+                    username: this.username,
+                    password: this.password,
+                    IsVerifed: true
+                });
+
+                console.log(registerUserRequest);
+                alert("Usuario creado correctamente");
+            }
+        }
+    }
 }
 </script>
 
