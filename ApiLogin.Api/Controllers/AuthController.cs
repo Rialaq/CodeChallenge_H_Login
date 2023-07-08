@@ -29,17 +29,18 @@ namespace ApiLogin.Api.Controllers
             var getUser = await _userRepository.GetByUsernameAndPassword(user.Username, user.Password);
             if (getUser == null)
             {
-                return Unauthorized("La cuenta no existe");
-            }
-
-            if (getUser.Password != user.Password)
-            {
-                return Unauthorized("Contraseña Incorrecta");
+                return Unauthorized("Usuario o contraseña incorrecta");
             }
 
             return Ok(getUser);
         }
 
+
+        /// <summary>
+        /// Metodo para el registro del usuario. Valida si el mismo existe mediante el nombre de usuario.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns>Reotorna Conflict si el mismo existe en caso contrario retorna 200 OK </returns>
         [HttpPost("signin")]
         public async Task<IActionResult> Register([FromBody] User user)
         {

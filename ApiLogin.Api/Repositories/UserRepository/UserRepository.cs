@@ -6,28 +6,29 @@ namespace ApiLogin.Api.Repositories.UserRespository
 {
     public class UserRespository : IUserRepository
     {
-        private readonly List<User> _users;
         private readonly UserDBContext _context;
 
         public UserRespository(UserDBContext context)
         {
-            _users = new List<User>();
             _context = context;
         }
 
-        public Task<User?> GetByUsername(string? username)
+        public async Task<User?> GetByUsername(string? username)
         {
-            return Task.FromResult(_users.FirstOrDefault(x => x.Username == username));
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);
+            return user;
         }
 
-        public Task<User?> GetByMail(string? Mail)
+        public async Task<User?> GetByMail(string? Mail)
         {
-            return Task.FromResult(_users.FirstOrDefault(x => x.Mail == Mail));
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Mail == Mail);
+            return user;
         }
 
-        public Task<User?> GetByUsernameAndPassword(string? username, string? password)
+        public async Task<User?> GetByUsernameAndPassword(string? username, string? password)
         {
-            return Task.FromResult(_users.FirstOrDefault(x => x.Username == username && x.Password == password));
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username && x.Password == password);
+            return user;
         }
 
         public async Task CreateUser(User user)
