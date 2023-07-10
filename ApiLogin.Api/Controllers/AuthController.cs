@@ -29,10 +29,10 @@ namespace ApiLogin.Api.Controllers
             var getUser = await _userRepository.GetByUsernameAndPassword(user.Username, user.Password);
             if (getUser == null)
             {
-                return Unauthorized("Usuario o contraseña incorrecta");
+                return Ok("Usuario o contraseña incorrecta");
             }
 
-            return Ok(getUser);
+            return Ok(true);
         }
 
 
@@ -48,11 +48,11 @@ namespace ApiLogin.Api.Controllers
 
             if(existingUser.Result != null)
             {
-                return Conflict("Ya existe un usuario con el nombre de usuario");
+                return Ok("Ya existe un usuario con el nombre de usuario");
             }
             
             await _userRepository.CreateUser(user);
-            return Ok();
+            return Ok(true);
         }
     }
 }

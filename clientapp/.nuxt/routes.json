@@ -2,13 +2,15 @@
   {
     "name": "register",
     "path": "/register",
-    "component": "C:\\\\Users\\\\alien\\\\OneDrive\\\\Documentos\\\\GitHub\\\\CodeChallenge_H_Login\\\\clientapp\\\\pages\\\\register.vue",
-    "chunkName": "pages/register"
+    "component": "C:\\\\Users\\\\lord_\\\\OneDrive\\\\Documentos\\\\GitHub\\\\CodeChallenge_H_Login\\\\clientapp\\\\pages\\\\register.vue",
+    "chunkName": "pages/register",
+    "_name": "_0c8e1e86"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "C:\\\\Users\\\\alien\\\\OneDrive\\\\Documentos\\\\GitHub\\\\CodeChallenge_H_Login\\\\clientapp\\\\pages\\\\index.vue",
-    "chunkName": "pages/index"
+    "component": "C:\\\\Users\\\\lord_\\\\OneDrive\\\\Documentos\\\\GitHub\\\\CodeChallenge_H_Login\\\\clientapp\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_736d78a8"
   }
 ]
