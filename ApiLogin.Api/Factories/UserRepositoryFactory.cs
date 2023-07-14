@@ -1,5 +1,4 @@
 using ApiLogin.Api.Data;
-using ApiLogin.Api.Repositories;
 using ApiLogin.Api.Repositories.UserRespository;
 
 namespace ApiLogin.Api.Factories

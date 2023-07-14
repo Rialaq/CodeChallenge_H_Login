@@ -46,7 +46,7 @@ namespace ApiLogin.Api.Controllers
         {
             var existingUser = _userRepository.GetByUsername(user?.Username);
 
-            if(existingUser.Result != null)
+            if(existingUser.Result == null)
             {
                 return Ok("Ya existe un usuario con el nombre de usuario");
             }
